@@ -1,0 +1,14 @@
+{
+  "name": "tiket",
+  "version": "1.0.0",
+  "description": "Важно: [Примеры кода для выполнения домашних заданий](https://github.com/netology-code/ahj-code)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
