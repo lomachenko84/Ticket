@@ -1,7 +1,64 @@
 .list {
     width: 90vw;
-    height: 50 px;
     margin: 20 px;
-    padding: 5 px;
     border: #000000 solid 1px;
+}
+
+.tiket {
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tiket:not(:last-child) {
+    border-bottom: #000000 solid 1px;
+}
+
+.check {
+    width: 20px;
+    height: 20px;
+    border: #000000 solid 1px;
+    border-radius: 50%;
+    margin: 5px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+   }
+.check.checked::after{
+    position: absolute;
+    width: 10px;
+    height: 15px;
+    content: "";
+    border-bottom: 3px solid #000000;
+    border-left: 3px solid #000000;
+    transform: rotate(45deg);
+}
+
+.title {
+    margin-left: 15px;
+    font-size: 20px;
+    flex: 1;
+}
+
+.date {
+    font-size: 20px;
+    flex: 1;
+}
+
+.editButton {
+    width: 20px;
+    height: 20px;
+    border: #000000 solid 1px;
+    border-radius: 50%;
+    margin: 5px;
+}
+
+.deleteButton {
+    width: 20px;
+    height: 20px;
+    border: #000000 solid 1px;
+    border-radius: 50%;
+    margin: 5px;
 }

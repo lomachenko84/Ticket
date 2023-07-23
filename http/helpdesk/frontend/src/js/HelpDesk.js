@@ -1,3 +1,4 @@
+import { create } from "core-js/core/object";
 import TicketService from "./TicketService";
 
 /**
@@ -13,20 +14,24 @@ export default class HelpDesk {
     this.ticketService = new TicketService();
 
   }
+}
 
-  init() {
-    console.log("init")
-    this.ticketService.list((responce) => {
-      console.log(responce)
-      this.tickets = responce;
-    })
+init() {
+  this.ticketService.list((responce) => {
+    this.tickets = responce.map(tiket => new Ticket(tiket));
     this.renderTiketList();
-  }
+  })
+}
 
 renderTiketList() {
   let list = document.createElement("div")
-  list.className = "list"
-  th
+  list.className = "list";
+  this.container.appendChild(list);
+  this.list = list;
+  this.tickets.forEach((el) => {
+    list.appendChild(this.getTiketElement(el))
+  })
+}
+}
 
-}
-}
+
