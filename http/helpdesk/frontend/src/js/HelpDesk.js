@@ -32,6 +32,6 @@ renderTiketList() {
     list.appendChild(this.getTiketElement(el))
   })
 }
-}
+
 
 

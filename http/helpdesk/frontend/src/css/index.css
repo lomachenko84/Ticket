@@ -33,7 +33,7 @@
     content: "";
     border-bottom: 3px solid #000000;
     border-left: 3px solid #000000;
-    transform: rotate(45deg);
+    transform: rotate(-50deg);
 }
 
 .title {
