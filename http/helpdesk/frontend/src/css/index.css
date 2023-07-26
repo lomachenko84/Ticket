@@ -8,8 +8,26 @@
     width: 100%;
     min-height: 40px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     align-items: center;
+}
+.head {
+    width: 100%;
+    min-height: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+}
+
+.body {
+    display: none;
+    padding: 10px;
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.body.visible {
+    display: block;
 }
 
 .tiket:not(:last-child) {
@@ -61,4 +79,17 @@
     border: #000000 solid 1px;
     border-radius: 50%;
     margin: 5px;
+}
+
+.button {
+    height: 40px;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    padding: 10px 15px;
+    font-size: 20px;
+    text-align: center;
+}
+.addTicketButton {
+    position: relative
+    left: 78%;
 }

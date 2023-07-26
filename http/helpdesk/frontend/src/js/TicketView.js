@@ -4,29 +4,46 @@
  * */
 export default class TicketView {
   constructor(tiket) {
-    this.view = getTiketElement(tiket)
+    this.view = this.getTiketElement(tiket);
+    this.discriptionIsOpen = false;
+
+    this.addListeners();
+  }
+
+  addListeners() {
+    this.view.addEventListener("click", this.toogleDescription.bind(this));  
+  }
+
+toogleDescription() {
+  if (!this.discriptionIsOpen) {
+    this.body.classList.remove("visible")
+    } else {
+    this.body.classList.add("visible")
+    }
+  this.discriptionIsOpen = !this.discriptionIsOpen;
   }
   getTiketElement({
     created,
     name,
-    status
+    status,
+    description
   }) {
     let tiket = document.createElement("div")
     tiket.className = "tiket";
 
-    let head = document.createElement("div")
-    head.className = "head";
+    this.head = document.createElement("div")
+    this.head.className = "head";
 
-    let body = document.createElement("div")
-    body.className = "body";
-    body.innerText = discription ? discription : "пусто"
+    this.body = document.createElement("div")
+    this.body.className = "body";
+    this.body.innerText = description ? description : "пусто"
 
-    tiket.addEventListener("click", () => {
-      body.classList.toggle("visible");
-    })
-    let check = document.createElement("div")
-    check.className = "check";
-    tiket.appendChild(check);
+    tiket.appendChild(this.head);
+    tiket.appendChild(this.body);
+
+    this.check = document.createElement("div")
+    this.check.className = "check";
+    this.head.appendChild(this.check);
     if (status) {
       check.classList.add("checked")
     }
@@ -34,21 +51,21 @@ export default class TicketView {
     let title = document.createElement("div")
     title.className = "title";
     title.innerText = name;
-    tiket.appendChild(title);
+    this.head.appendChild(title);
 
     let date = document.createElement("div")
     date.className = "date";
-    date.innerText = new Date(createdreated).toLocaleString();
-    tiket.appendChild(date);
+    date.innerText = new Date(created).toLocaleString();
+    this.head.appendChild(date);
 
-    let editButton = document.createElement("div")
-    editButton.className = "editButton";
-    tiket.appendChild(editButton);
+    this.editButton = document.createElement("button")
+    this.editButton.className = "editButton";
+    this.head.appendChild(this.editButton);
 
-    let deleteButton = document.createElement("div")
-    deleteButton.className = "deleteButton";
-    tiket.appendChild(deleteButton);
+    this.deleteButton = document.createElement("button")
+    this.deleteButton.className = "deleteButton";
+    this.head.appendChild(this.deleteButton);
 
     return tiket
-}
+  }
 }
