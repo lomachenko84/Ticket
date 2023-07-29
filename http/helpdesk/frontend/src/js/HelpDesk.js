@@ -1,4 +1,3 @@
-import { create } from "core-js/core/object";
 import TicketService from "./TicketService";
 import TicketView from "./TicketView";
 import TicketForm from "./TicketForm";
@@ -13,22 +12,23 @@ export default class HelpDesk {
     }
     this.container = container;
     this.ticketService = new TicketService();
-
   }
-}
+
 
 init() {
-  console.log("init")
+  console.log("init");
   this.ticketService.list((responce) => {
     this.tickets = responce.map(tiket => new Ticket(tiket));
     this.renderAddTicketButton();
     this.renderTiketList();
     this.renderAddTicketForm();
+    let funk = this.addTicketFormHandler.bind(this);
+    this.addButton.addEventListener("click",funk);
   })
 }
 
 renderTiketList() {
-  let list = document.createElement("div")
+  this.list = document.createElement("div");
   list.className = "list";
   this.container.appendChild(list);
   this.list = list;
@@ -39,9 +39,9 @@ renderTiketList() {
 }
 
 renderAddTicketButton() {
-  let addButton = new Button({
-    className: "addTickenButton",
-    content: "Добавить тикет",
+  this.addButton = new Button({
+    className:"addTickenButton",
+    content:"Добавить тикет",
     parent: this.container
   })
 
@@ -49,12 +49,9 @@ renderAddTicketButton() {
 }
 renderAddTicketForm() {
   let addTicketForm = new TicketForm(this.container);
-  this.addTicketForm = addTicketForm;
 }
 
-toggleTicketForm() {
-  addTicketForm.
-
+addTicketFormHandler() {
+  this.addTicketForm.toggleform();
 }
-
-
+}

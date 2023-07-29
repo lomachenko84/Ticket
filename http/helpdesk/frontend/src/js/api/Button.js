@@ -10,7 +10,9 @@ export default class Button {
     createElement(className, content, parent) {
         let button = document.createElement("button");
         button.className = "button";
-        button.classList
+        if(className) {
+            button.classList.add(className)
+        }
         button.innerText = content;
         parent.appendChild(button);
         return button

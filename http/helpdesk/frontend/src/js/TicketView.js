@@ -11,7 +11,9 @@ export default class TicketView {
   }
 
   addListeners() {
-    this.view.addEventListener("click", this.toogleDescription.bind(this));  
+    let funk = this.toogleDescription.bind(this);
+    this.view.addEventListener("click", funk);
+     
   }
 
 toogleDescription() {

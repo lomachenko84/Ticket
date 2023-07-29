@@ -8,68 +8,72 @@ export default class TicketForm {
   constructor(parent) {
     this.content = this.renderForm(parent);
   }
-}
 
-renderForm(parent) {
-  let formContainer = document.createElement("div");
-  formContainer.className = "formContainer";
+  renderForm(parent) {
+    let formContainer = document.createElement("div");
+    formContainer.className = "formContainer";
 
-  let title = document.createElement("div");
-  title.className = "formTitle";
-  title.innerText = "Добавить тикет";
+    let title = document.createElement("div");
+    title.className = "formTitle";
+    title.innerText = "Добавить тикет";
 
-  formContainer.appendChild(title);
+    formContainer.appendChild(title);
 
-  let form = document.createElement("form");
-  form.className = "addTicketForm";
+    let form = document.createElement("form");
+    form.className = "addTicketForm";
 
-  let shortDescriptionlable = document.createElement("label");
-  shortDescriptionlable.className = "shortDescriptionlable";
-  shortDescriptionlable.innerText = "Краткое описание";
+    let shortDescriptionlable = document.createElement("label");
+    shortDescriptionlable.className = "shortDescriptionlable";
+    shortDescriptionlable.innerText = "Краткое описание";
 
-  form.appendChild(shortDescriptionlable);
+    form.appendChild(shortDescriptionlable);
 
-  let shortDescriptionInput = document.createElement("Input");
-  shortDescriptionInput.className = "shortDescriptionInput";
+    let shortDescriptionInput = document.createElement("Input");
+    shortDescriptionInput.className = "shortDescriptionInput";
 
-  form.appendChild(shortDescriptionInput);
+    form.appendChild(shortDescriptionInput);
 
-  let longDescriptionlable = document.createElement("label");
-  longDescriptionlable.className = "longDescriptionlable";
+    let longDescriptionlable = document.createElement("label");
+    longDescriptionlable.className = "longDescriptionlable";
 
-  form.appendChild(longDescriptionlable);
+    form.appendChild(longDescriptionlable);
 
-  let longDescriptionInput = document.createElement("Input");
-  longDescriptionInput.className = "longDescriptionInput";
+    let longDescriptionInput = document.createElement("Input");
+    longDescriptionInput.className = "longDescriptionInput";
 
-  form.appendChild(longDescriptionInput);
+    form.appendChild(longDescriptionInput);
 
-  let buttonContainer = document.createElement("div");
-  buttonContainer.className = "buttonContainer";
+    let buttonContainer = document.createElement("div");
+    buttonContainer.className = "buttonContainer";
 
-  new buttonContainer({
-    className: "okButton",
-    content: "OK",
-    parent: buttonContainer
-  })
+    new Button({
+      className: "okButton",
+      content: "OK",
+      parent: buttonContainer
+    })
 
-  new buttonContainer({
-    className: "cancelButton",
-    content: "Отмена",
-    parent: buttonContainer
-  })
+    this.cancelButton = new Button({
+      className: "cancelButton",
+      content: "Отмена",
+      parent: buttonContainer
+    })
 
-  form.appendChild(buttonContainer);
-  formContainer.appendChild(form);
+    let bindToggle = this.toggleForm.bind(this)
+    this.cancelButton.addEventListeren("click", bindToggle);
+    this.cancelButton.formaction();
 
-  parent.appendChild(formContainer);
-  return formContainer;
-}
-toggleForm() {
-  if (this.isVisible) {
-    this.container.classList.remove("visible")
-  } else {
-    this.container.classList.add("visible")
+    form.appendChild(buttonContainer);
+    formContainer.appendChild(form);
+
+    parent.appendChild(formContainer);
+    return formContainer;
+  }
+
+  toggleForm() {
+    if (this.isVisible) {
+      this.container.classList.remove("visible")
+    } else {
+      this.container.classList.add("visible")
+    }
   }
 }
-

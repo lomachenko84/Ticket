@@ -31,26 +31,29 @@ visibility: hidden;
 }
 .shortDescriptionlable {
     font-size: 20px;
+    padding:  5px 0;
 }
 .shortDescriptionInput {
 width: 500px;
-height: 30px;
+height: 50px;
 }
 .longDescriptionlable {
 font-size: 20px;
+padding:  5px 0;
 }
 .longDescriptionInput {
     width: 500px;
-    height: 30px;
+    height: 50px;
 }
 .buttonContainer {
 width: 100%;
 display: flex;
-justify-content: end;
+justify-content: flex-end;
+margin-top: 15px;
 }
 .okButton {
-
+    width: 100%;
 }
 .cancelButton {
-
+margin: 0 10px;
 }
